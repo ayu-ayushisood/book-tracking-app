@@ -1,4 +1,5 @@
 import React, { useState, useEffect }  from 'react';
+import SelectBook from './SelectBook';
 import PropTypes from 'prop-types';
 
 const Book = props => {
@@ -7,9 +8,12 @@ const Book = props => {
     return (
         <li>
             <div className="book">
-                <img src={book.imageLinks.thumbnail}/>
-                {book.title}
-                by {authors}
+                <div className="top_section">
+                    <img src={book.imageLinks.thumbnail} className="book_cover"/>
+                </div>
+                <div className="title">{book.title}</div>
+                <div className="authors">{authors}</div>
+                <SelectBook book={book} onChangeShelf={onChangeShelf}/>
             </div>
         </li>
     )

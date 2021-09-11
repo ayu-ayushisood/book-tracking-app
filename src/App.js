@@ -1,48 +1,73 @@
-import React, { useState, useEffect }  from 'react';
+import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import Bookshelf from './components/Bookshelf';
+import Search from './components/Search';
 import * as api from './api/booksAPI';
 
 import './App.css';
 
-const App = props => {
+class App extends Component {
 
-  const [books, setBooks] = useState([]);
+  state = {
+    books: [],
+  };
 
-  useEffect(()=>{
-    api.getAll().then(res => {
-      setBooks(res);
-    })
-  });
-
-  const changeShelf = () => {
-    
+  componentDidMount() {
+		api.getAll().then(res => {
+			this.setState({
+				books: res,
+			});
+    });
   }
-  
-  return (
-    <div className="App">
-      <header className="app_header">
-        <h1>MyReads</h1>
-      </header>
-      <div className="list_books">
-          <Bookshelf 
+
+  shelfChange = (book, e) => {
+    return new Promise(resolve => {
+      api.update(book, e.target.value).then(res => {
+        api.getAll().then(res => {
+          this.setState({ books: res},
+						resolve(res)
+					);
+        });
+      });
+    });
+  };
+
+  render() {
+    const {books} = this.state;
+    return (
+      <div className="App">
+        <header className="app_header">
+          <h1>MyReads</h1>
+        </header>
+        <Route
+					exact
+					path="/"
+					render={() => (
+        <div className="list_books">
+          <Bookshelf
             type="Currently Reading"
-            books= {books.filter(book => book.shelf === 'currentlyReading')}
-            onChangeShelf={changeShelf()}
+            books={books.filter(book => book.shelf === 'currentlyReading')}
+            onChangeShelf={this.shelfChange}
           />
-          <Bookshelf 
+          <Bookshelf
             type="Want to Read"
-            books= {books.filter(book => book.shelf === 'wantToRead')}
-            onChangeShelf={changeShelf()}
+            books={books.filter(book => book.shelf === 'wantToRead')}
+            onChangeShelf={this.shelfChange}
           />
-          <Bookshelf 
+          <Bookshelf
             type="Read"
-            books= {books.filter(book => book.shelf === 'read')}
-            onChangeShelf={changeShelf()}
+            books={books.filter(book => book.shelf === 'read')}
+            onChangeShelf={this.shelfChange}
           />
         </div>
-    </div>
-  );
+        )}/>
+        <Route
+            path="/search"
+            render={() => <Search shelvedBooks={books} onChangeShelf={this.shelfChange} />}
+				  />
+      </div>
+    );
+  }
 }
 
 export default App;
