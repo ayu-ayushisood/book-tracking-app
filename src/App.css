@@ -4,8 +4,7 @@
 
 
 .app_header {
-  background-color: #282c34;
-  /* min-height: 100vh; */
+  background-color: #2e7d32;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +18,12 @@
 }
 .book_shelf {
   padding: 0 10px 20px;
+}
+.book_shelf .shelf_name {
+  border-bottom: 1px solid #8080804f;
+  padding-bottom: 8px;
+  margin-bottom: 3em;
+  text-align: left;
 }
 .books {
   list-style-type: none;
@@ -51,7 +56,7 @@
   font-size: 0.8em;
 }
 .title,.authors {
-  font-size: 0.8em;
+  font-size: 1em;
 }
 title {
   margin-top: 10px;
@@ -59,25 +64,100 @@ title {
 .authors {
   color: #999;
 }
-.select_book {
-  bottom: -10px;
-  width: 40px;
-  height: 40px;
+.dropdown_select {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background: #60ac5d;
   background-image: url(./assets/dropdown.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 20px;
+  background-size: 15px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-.select_book select {
+.dropdown_select:hover {
+  background-image: url(./assets/dropdown_hover.png);
+}
+.dropdown_select select {
   width: 100%;
   height: 100%;
   opacity: 0;
   cursor: pointer;
 }
-.select_book.loading {
+.dropdown_select.loading {
 	pointer-events: none;
 	background-image: none;
+}
+.search_bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+}
+.back {
+  display: block;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background: white;
+  background-image: url(./assets/back.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0;
+}
+.input_container{
+  flex: 1;
+}
+.search_bar input {
+  width: 100%;
+  padding: 15px 10px;
+  font-size: 1.25em;
+  border: none;
+  outline: none;
+}
+
+.results {
+  padding: 80px 10px 20px;
+}
+.books_grid {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.books_grid li {
+  padding: 10px 15px;
+  text-align: left;
+}
+.add_book {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+.add_book a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #2e7d32;
+  background-image: url(./assets/add.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size: 0;
+}
+.add_book a:hover {
+  background-image: url(./assets/add_hover.png);
 }
