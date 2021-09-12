@@ -1,6 +1,6 @@
 # Udacity | MyReads: A Book Tracking App
 
-# Deployment:
+## Deployment:
 > https://ayu-ayushisood.github.io/book-tracking-app
 
 ## Installation
