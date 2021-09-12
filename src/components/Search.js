@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import Book from './Book';
 import { Link } from 'react-router-dom';
 import * as api from '../api/booksAPI';
-
+import { throttle } from 'lodash'
 class Search extends Component {
+	constructor(props) {
+		super(props);
+		this.handleInputThrottled = throttle(this.updateQuery, 100)
+	}
 	state = {
 		query: '',
 		searchedBooks: [],
@@ -80,7 +84,8 @@ class Search extends Component {
 							type="text"
 							value={this.state.query}
 							placeholder="Search by title or author"
-							onChange={event => this.updateQuery(event)}
+							// onChange={event => this.updateQuery(event)}
+							onChange={this.handleInputThrottled}
 						/>
 					</div>
 				</div>
