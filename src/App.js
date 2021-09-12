@@ -12,12 +12,12 @@ class App extends Component {
     books: [],
   };
 
-  componentDidMount() {
-    api.getAll().then(res => {
+  async componentDidMount() {
+   const res = await api.getAll();
       this.setState({
         books: res,
       });
-    });
+  
   }
 
   shelfChange = (book, e) => {
