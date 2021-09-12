@@ -21,7 +21,7 @@ class BookShelfChanger extends Component {
 
 	render() {
 		return (
-			<div className={this.state.isUpdating ? 'select_book loading' : 'select_book'}>
+			<div className={this.state.isUpdating ? 'dropdown_select loading' : 'dropdown_select'}>
 				<select value={this.props.book.shelf} onChange={event => this.changeShelf(event)}>
 					<option value="move" disabled>
 						Move to...

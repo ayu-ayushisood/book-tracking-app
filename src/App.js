@@ -13,10 +13,10 @@ class App extends Component {
   };
 
   componentDidMount() {
-		api.getAll().then(res => {
-			this.setState({
-				books: res,
-			});
+    api.getAll().then(res => {
+      this.setState({
+        books: res,
+      });
     });
   }
 
@@ -24,47 +24,53 @@ class App extends Component {
     return new Promise(resolve => {
       api.update(book, e.target.value).then(res => {
         api.getAll().then(res => {
-          this.setState({ books: res},
-						resolve(res)
-					);
+          this.setState({ books: res },
+            resolve(res)
+          );
         });
       });
     });
   };
 
   render() {
-    const {books} = this.state;
+    const { books } = this.state;
     return (
       <div className="App">
-        <header className="app_header">
-          <h1>MyReads</h1>
-        </header>
+
         <Route
-					exact
-					path="/"
-					render={() => (
-        <div className="list_books">
-          <Bookshelf
-            type="Currently Reading"
-            books={books.filter(book => book.shelf === 'currentlyReading')}
-            onChangeShelf={this.shelfChange}
-          />
-          <Bookshelf
-            type="Want to Read"
-            books={books.filter(book => book.shelf === 'wantToRead')}
-            onChangeShelf={this.shelfChange}
-          />
-          <Bookshelf
-            type="Read"
-            books={books.filter(book => book.shelf === 'read')}
-            onChangeShelf={this.shelfChange}
-          />
-        </div>
-        )}/>
+          exact
+          path="/"
+          render={() => (
+            <>
+            <div className="list_books">
+              <div className="app_header">
+                <h1>MyReads</h1>
+              </div>
+              <Bookshelf
+                type="Currently Reading"
+                books={books.filter(book => book.shelf === 'currentlyReading')}
+                onChangeShelf={this.shelfChange}
+              />
+              <Bookshelf
+                type="Want to Read"
+                books={books.filter(book => book.shelf === 'wantToRead')}
+                onChangeShelf={this.shelfChange}
+              />
+              <Bookshelf
+                type="Read"
+                books={books.filter(book => book.shelf === 'read')}
+                onChangeShelf={this.shelfChange}
+              />
+            </div>
+            <div className="add_book">
+              <Link to="/search">Add Book</Link>
+            </div>
+            </>
+          )} />
         <Route
-            path="/search"
-            render={() => <Search shelvedBooks={books} onChangeShelf={this.shelfChange} />}
-				  />
+          path="/search"
+          render={() => <Search shelvedBooks={books} onChangeShelf={this.shelfChange} />}
+        />
       </div>
     );
   }
