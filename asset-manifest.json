@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/book-tracking-app/static/css/main.b38cfdc2.chunk.css",
+    "main.js": "/book-tracking-app/static/js/main.e4eb52a1.chunk.js",
+    "main.js.map": "/book-tracking-app/static/js/main.e4eb52a1.chunk.js.map",
+    "runtime-main.js": "/book-tracking-app/static/js/runtime-main.32df62a9.js",
+    "runtime-main.js.map": "/book-tracking-app/static/js/runtime-main.32df62a9.js.map",
+    "static/js/2.71fff1e4.chunk.js": "/book-tracking-app/static/js/2.71fff1e4.chunk.js",
+    "static/js/2.71fff1e4.chunk.js.map": "/book-tracking-app/static/js/2.71fff1e4.chunk.js.map",
+    "static/js/3.b95d3e8d.chunk.js": "/book-tracking-app/static/js/3.b95d3e8d.chunk.js",
+    "static/js/3.b95d3e8d.chunk.js.map": "/book-tracking-app/static/js/3.b95d3e8d.chunk.js.map",
+    "index.html": "/book-tracking-app/index.html",
+    "static/css/main.b38cfdc2.chunk.css.map": "/book-tracking-app/static/css/main.b38cfdc2.chunk.css.map",
+    "static/js/2.71fff1e4.chunk.js.LICENSE.txt": "/book-tracking-app/static/js/2.71fff1e4.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/book-tracking-app/static/media/back.a5021485.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32df62a9.js",
+    "static/js/2.71fff1e4.chunk.js",
+    "static/css/main.b38cfdc2.chunk.css",
+    "static/js/main.e4eb52a1.chunk.js"
+  ]
+}
